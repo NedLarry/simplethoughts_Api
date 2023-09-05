@@ -1,5 +1,4 @@
 ﻿
-using Abstractions.Interfaces;
 using NUnit.Framework;
 using Services;
 
@@ -9,12 +8,12 @@ namespace Tests_
     [TestFixture]
     public class BaseTest
     {
-        private PingService _pingService;
+        private PingService? _pingService;
 
         [SetUp]
         public void Setup()
         {
-            _pingService = new PingService();
+            _pingService = _pingService is null ? new PingService() : _pingService;
         }
 
 
@@ -24,8 +23,6 @@ namespace Tests_
             string expected = "WE UP!!!";
 
             string actual = _pingService.Ping().Result;
-
-            Console.WriteLine(actual);
 
             Assert.AreEqual(expected, actual);
         }
