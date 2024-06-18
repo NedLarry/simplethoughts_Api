@@ -10,6 +10,10 @@ namespace Abstractions.Models
 {
     public class Comment : BaseEntity
     {
+        [EmailAddress]
+        public string EmailAddress { get; set; } = null!;
+
+
         [Required]
         [StringLength(100)]
         public string Text { get; set; } = null!;

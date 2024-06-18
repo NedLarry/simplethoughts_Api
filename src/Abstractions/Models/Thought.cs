@@ -13,10 +13,16 @@ namespace Abstractions.Models
         public Guid Id { get; set; }
 
         [Required]
+        [StringLength(100)]
+        public string Title { get; set; } = null!;
+
+        [Required]
         [StringLength(500)]
         public string Content { get; set; } = null!;
 
         public virtual List<Comment> Comments { get; set; } = new List<Comment>();
+
+        public bool isPrivate { get; set; }
 
 
     }
