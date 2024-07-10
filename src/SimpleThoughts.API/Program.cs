@@ -12,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(_requests).GetTypeInfo().Assembly));
 builder.Services.ConfigureServices();
+builder.Services.ConfigureDbContext(builder.Configuration);
 
 var app = builder.Build();
 

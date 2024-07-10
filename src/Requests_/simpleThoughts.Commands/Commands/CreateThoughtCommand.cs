@@ -1,14 +1,18 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Abstractions.DTOs;
+using Abstractions.Interfaces;
+using Abstractions.Models;
+using MediatR;
 
-namespace Abstractions.Models
+namespace Requests_.simpleThoughts.Commands.Commands
 {
-    public class Thought
+
+    
+    public class CreateThoughtCommand : IRequest<BaseResponse<Thought>>
     {
         public int Id { get; set; }
 
@@ -19,11 +23,5 @@ namespace Abstractions.Models
         [Required]
         [StringLength(500)]
         public string Content { get; set; } = null!;
-
-        public virtual List<Comment> Comments { get; set; } = new List<Comment>();
-
-        public bool isPrivate { get; set; }
-
-
     }
 }

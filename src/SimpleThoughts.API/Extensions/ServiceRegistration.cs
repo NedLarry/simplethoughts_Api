@@ -9,6 +9,12 @@ namespace SimpleThoughts.API.Extensions
         public static void ConfigureServices(this IServiceCollection services)
         {
             services.AddTransient<IPingService, PingService>();
+            services.AddTransient<IThoughtService, ThoughtService>();
+        }
+
+        public static void ConfigureDbContext(this IServiceCollection services, IConfiguration config)
+        {
+            services.AddDbContext<ThoughtContext>(opt => opt.UseSqlServer(config.GetConnectionString("DefaultConnection")));
         }
     }
 }

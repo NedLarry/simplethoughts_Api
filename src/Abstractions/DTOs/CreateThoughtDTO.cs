@@ -1,17 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Abstractions.Models
+namespace Abstractions.DTOs
 {
-    public class Thought
+    public class CreateThoughtDTO
     {
-        public int Id { get; set; }
-
         [Required]
         [StringLength(100)]
         public string Title { get; set; } = null!;
@@ -19,11 +15,5 @@ namespace Abstractions.Models
         [Required]
         [StringLength(500)]
         public string Content { get; set; } = null!;
-
-        public virtual List<Comment> Comments { get; set; } = new List<Comment>();
-
-        public bool isPrivate { get; set; }
-
-
     }
 }
